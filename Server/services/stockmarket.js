@@ -1,4 +1,5 @@
 const express = require('express');
+const axios = require('axios');
 const router = express.Router();
 
 const STOCKS_API_KEY = process.env.Stocks_API_KEY;
@@ -24,9 +25,10 @@ router.get('/', async (req, res) => {
         ];
 
         const fetchStocks = async (Symbol) => {
-            const data = await fetch(`https://finnhub.io/api/v1/quote?symbol=${Symbol}&token=${STOCKS_API_KEY}`);
-            return data.json();
+            const response = await axios.get(`https://finnhub.io/api/v1/quote?symbol=${Symbol}&token=${STOCKS_API_KEY}`);
+            return response.data;
         }
+
 
         const CompanyStockData = await Promise.all(company.map(async (c) => {
             const stockdata = await fetchStocks(c.symbol);

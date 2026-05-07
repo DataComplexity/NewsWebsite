@@ -1,4 +1,5 @@
 const express = require('express');
+const axios = require('axios');
 const router = express.Router();
 
 const CRYPTO_API = process.env.Stocks_API_KEY;
@@ -19,8 +20,8 @@ router.get("/", async (req, res) => {
         ];
 
         const fetchCrypto = async (Symbol) => {
-            const data = await fetch(`https://finnhub.io/api/v1/quote?symbol=${Symbol}&token=${CRYPTO_API}`);
-            return data.json();
+            const response = await axios.get(`https://finnhub.io/api/v1/quote?symbol=${Symbol}&token=${CRYPTO_API}`);
+            return response.data;
         }
 
         const cryptoData = await Promise.all(crypto.map(async (s) => {
@@ -33,6 +34,7 @@ router.get("/", async (req, res) => {
         }));
         res.json(cryptoData);
     }
+
     catch (error) {
         console.error("Error in fetching crypto data: ", error);
         res.status(500).json({ error: "Failed to fetch crypto data!" });

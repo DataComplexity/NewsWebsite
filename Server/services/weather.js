@@ -1,5 +1,6 @@
 const express = require("express");
-const geoip = require("geoip-lite"); // move outside route — don't require inside handler
+const axios = require("axios");
+const geoip = require("geoip-lite");
 const weather = express.Router();
 
 weather.get("/", async (req, res) => {
@@ -11,9 +12,8 @@ weather.get("/", async (req, res) => {
     // 2. Local dev fallback
     if (!ip || ip === "::1" || ip === "127.0.0.1") {
       try {
-        const ipRes = await fetch("https://api.ipify.org?format=json");
-        const ipData = await ipRes.json();
-        ip = ipData.ip;
+        const ipRes = await axios.get("https://api.ipify.org?format=json");
+        ip = ipRes.data.ip;
       } catch {
         ip = ""; // will default to London below
       }
@@ -23,19 +23,17 @@ weather.get("/", async (req, res) => {
     const geo = geoip.lookup(ip);
     const city = geo?.city || "London";
 
-    // 4. Weather fetch with timeout guard
-    const controller = new AbortController();
-    const timeout = setTimeout(() => controller.abort(), 5000);
+    // 4. Weather fetch with timeout
     let weatherData;
     try {
-      const response = await fetch(`https://wttr.in/${encodeURIComponent(city)}?format=j1`, {
-        signal: controller.signal
+      const response = await axios.get(`https://wttr.in/${encodeURIComponent(city)}?format=j1`, {
+        timeout: 5000
       });
-      if (!response.ok) throw new Error(`wttr.in returned ${response.status}`);
-      weatherData = await response.json();
-    } finally {
-      clearTimeout(timeout);
+      weatherData = response.data;
+    } catch (apiErr) {
+      throw new Error(`wttr.in error: ${apiErr.message}`);
     }
+
 
     // 5. Safe extraction
     const current = weatherData?.current_condition?.[0];
