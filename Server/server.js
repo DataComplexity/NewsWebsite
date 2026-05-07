@@ -100,8 +100,8 @@ const distPath = path.join(__dirname, "../dist");
 app.use(express.static(distPath));
 
 // SPA Support: Serve index.html for any unknown routes
-app.get("*", (req, res) => {
+app.get(/.*/, (req, res) => {
   res.sendFile(path.join(distPath, "index.html"));
 });
 
-app.listen(port, () => console.log(`Server running on port: ${port}`));
+app.listen(port, () => console.log(`Server running on port: ${port}`));
