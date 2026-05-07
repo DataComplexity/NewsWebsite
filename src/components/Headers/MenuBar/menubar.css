@@ -1,0 +1,117 @@
+.drawer-content {
+    background-color: var(--bg-card);
+    color: var(--text-main);
+    max-height: 80vh;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    border-radius: 0 0 12px 12px;
+    box-shadow: 0 10px 25px var(--shadow-main);
+    border: 1px solid var(--border-main);
+    border-top: none;
+}
+
+.drawer-header {
+    background-color: var(--primary-color);
+    padding: 0.8rem 1.2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background-color 0.3s ease;
+    color: white;
+}
+
+.drawer-header h3 {
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: 800;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.4rem;
+    cursor: pointer;
+    line-height: 1;
+}
+
+.drawer-section {
+    padding: 0.8rem 1.2rem;
+}
+
+.drawer-section.border-top {
+    border-top: 1px solid var(--border-main);
+}
+
+.drawer-item {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    padding: 0.6rem 0;
+    cursor: pointer;
+    transition: color 0.2s ease;
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: var(--text-main);
+}
+
+.drawer-link {
+    text-decoration: none;
+    color: var(--text-main);
+}
+
+.drawer-item:hover {
+    color: var(--primary-color);
+}
+
+.drawer-icon {
+    width: 18px;
+    height: 18px;
+}
+
+.dropdown-trigger {
+    justify-content: space-between;
+}
+
+.arrow {
+    font-size: 1rem;
+    transition: transform 0.3s ease;
+}
+
+.arrow.down {
+    transform: rotate(90deg);
+}
+
+.nested-links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    padding-left: 2.3rem;
+    margin-bottom: 0.6rem;
+}
+
+.nested-link {
+    color: var(--text-main);
+    text-decoration: none;
+    font-size: 0.88rem;
+    transition: color 0.2s ease;
+}
+
+.nested-link:hover {
+    color: var(--primary-color);
+}
+
+.drawer-link {
+    color: black;
+    text-decoration: none;
+}
+
+.drawer-footer {
+    margin-top: auto;
+    padding: 0.8rem 1.2rem;
+    border-top: 1px solid var(--border-main);
+    font-size: 0.72rem;
+    color: var(--text-secondary);
+}

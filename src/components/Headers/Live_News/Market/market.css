@@ -1,0 +1,8 @@
+.marketPanel {
+    height: 30px;
+    width: 1300px;
+    position: relative;
+    z-index: 11;
+    display: flex;
+    flex-direction: row;
+}

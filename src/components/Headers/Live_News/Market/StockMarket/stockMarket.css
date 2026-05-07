@@ -1,0 +1,18 @@
+.stockPanel {
+    display: inline-block;
+    height: 25px;
+    width: 500px;
+    background-color: rgba(234, 221, 221, 0.1);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+
+.stock-item {
+    transition: transform 1s ease-in-out;
+}
+
+#item-name {
+    font-weight: bold;
+    font-family: 'Times New Roman', Times, serif;
+}
