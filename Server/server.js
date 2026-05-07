@@ -31,10 +31,23 @@ app.use(express.json());
 // DB connect
 mongoose.connect(process.env.MONGO_URI)
   .then(async () => {
-    console.log("DB connected");
+    console.log("✅ MongoDB Connected Successfully to:", mongoose.connection.name);
     startCron();
   })
-  .catch(err => console.log(err));
+  .catch(err => {
+    console.error("❌ MongoDB Connection Error!");
+    console.error("Make sure you have added MONGO_URI to Render Environment Variables.");
+    console.error("Error details:", err.message);
+  });
+
+// Health Check Route
+app.get("/health", (req, res) => {
+  res.json({ 
+    status: "online", 
+    database: mongoose.connection.readyState === 1 ? "connected" : "disconnected" 
+  });
+});
+
 
 // API routes
 app.get("/run", async (req, res) => {
