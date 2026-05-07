@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Global News Aggregator
 
 A high-performance, full-stack news aggregation platform designed for speed and multilingual capabilities. The platform uses automated ingestion pipelines to fetch, categorize, and store hundreds of thousands of articles (127k+ scale) from global sources via the GNews API.
@@ -92,6 +91,3 @@ Navigate to the provided localhost URL (typically `http://localhost:5173`) in yo
 * **Massive Data Scale:** Optimized MongoDB schema mapping and persistent language tagging capabilities handle a database of over 100,000 global articles with millisecond search queries.
 * **Premium UI/UX:** A "Midnight Navy" custom theming system built with Tailwind, complete with dynamic Navbar elements and Settings Modals.
 * **Geolocalized Routing:** Utilizes `geoip-lite` to automatically present relevant breaking news to the user based on their location.
-=======
-# NewsWebsite
->>>>>>> 27284b8c1bc24d36084e62e6cabb4aa6dbdfe92d
