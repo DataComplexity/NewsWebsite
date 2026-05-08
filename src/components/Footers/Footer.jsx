@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import logo from "../../assets/bharat-times-logo.svg";
 import "./Footer.css";
 
 const categories = [
@@ -40,7 +41,7 @@ export default function Footer() {
                     {/* Brand */}
                     <div className="footer-brand">
                         <img 
-                            src="./src/assets/bharat-times-logo.svg" 
+                            src={logo}
                             alt="The Bharat Times" 
                             className="footer-logo-image" 
                         />
