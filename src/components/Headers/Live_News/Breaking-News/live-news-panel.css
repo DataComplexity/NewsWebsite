@@ -31,6 +31,7 @@
 
 .ticker-container {
     padding-left: 110px;
+    width: 1300px;
     white-space: nowrap;
     overflow: hidden;
 }
